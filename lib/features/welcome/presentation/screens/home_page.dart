@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
 import 'package:form_app/features/registration/presentation/screens/registration_personal_infos_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
@@ -9,12 +10,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: Colors.teal[700]!,
+      color: AppColors.primaryColor,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
-            color: Colors.teal[700]!,
+            color: AppColors.primaryColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +94,7 @@ class HomePage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
-                        backgroundColor: Colors.greenAccent[200],
+                        backgroundColor: AppColors.accentColor,
                         minimumSize: Size(double.infinity, 54),
                       ),
                       child: Row(
