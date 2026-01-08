@@ -16,114 +16,119 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Material(
             color: AppColors.primaryColor,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Flutter Form Flow",
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    ),
-                    Row(
-                      spacing: 6,
-                      children: [
-                        RoundedIndicator(color: Colors.green[100]!),
-                        RoundedIndicator(color: Colors.green[100]!),
-                        RoundedIndicator(),
-                      ],
-                    ),
-                  ],
-                ),
-                Center(
-                  child: Card(
-                    elevation: 20,
-                    shadowColor: Colors.green[400],
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Flutter Form Flow",
+                        style: TextStyle(color: Colors.white, fontSize: 24),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          "assets/welcome_center_image.png",
-                          height: 300,
+                      Row(
+                        spacing: 6,
+                        children: [
+                          RoundedIndicator(color: Colors.green[100]!),
+                          RoundedIndicator(color: Colors.green[100]!),
+                          RoundedIndicator(),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Center(
+                    child: Card(
+                      elevation: 20,
+                      shadowColor: Colors.green[400],
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            "assets/welcome_center_image.png",
+                            height: 300,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 10),
-                    Center(
-                      child: Text(
-                        "Welcome Aboard",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
+                  Column(
+                    children: [
+                      SizedBox(height: 10),
+                      Center(
+                        child: Text(
+                          "Welcome Aboard",
+                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    Center(
-                      child: Text(
-                        "Master navigation and form handling in Flutter. A simple, guided multi-step experience awaits you.",
-                        style: TextStyle(color: Colors.white38, fontSize: 24),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-
-                Column(
-                  spacing: 20,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        navigateToPage(
-                          context,
-                          RegistrationPersonalInfosStepScreen(),
-                        );
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => HomePage()),
-                        // );
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(builder: (context) => HomePage()),
-                        // );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: AppColors.accentColor,
-                        minimumSize: Size(double.infinity, 54),
-                      ),
-                      child: Row(
-                        spacing: 10,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Start Form", style: TextStyle(fontSize: 18)),
-                          Icon(Icons.arrow_forward, size: 24),
-                        ],
-                      ),
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 3,
-                      children: [
-                        Icon(Icons.info, color: Colors.white),
-                        Text(
-                          "Learn about this project",
+                      SizedBox(height: 10),
+                      Center(
+                        child: Text(
+                          "Master navigation and form handling in Flutter. A simple, guided multi-step experience awaits you.",
                           style: TextStyle(color: Colors.white38, fontSize: 24),
                           textAlign: TextAlign.center,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
 
-                SizedBox(),
-              ],
+                  Column(
+                    spacing: 20,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          navigateToPage(
+                            context,
+                            RegistrationPersonalInfosStepScreen(),
+                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(builder: (context) => HomePage()),
+                          // );
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(builder: (context) => HomePage()),
+                          // );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          backgroundColor: AppColors.accentColor,
+                          minimumSize: Size(double.infinity, 54),
+                        ),
+                        child: Row(
+                          spacing: 10,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Start Form", style: TextStyle(fontSize: 18)),
+                            Icon(Icons.arrow_forward, size: 24),
+                          ],
+                        ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 3,
+                        children: [
+                          Icon(Icons.info, color: Colors.white),
+                          Text(
+                            "Learn about this project",
+                            style: TextStyle(
+                              color: Colors.white38,
+                              fontSize: 24,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(),
+                ],
+              ),
             ),
           ),
         ),
