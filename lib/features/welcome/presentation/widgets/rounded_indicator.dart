@@ -8,8 +8,8 @@ class RoundedIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 15,
-      height: 15,
+      width: 9,
+      height: 9,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: color,

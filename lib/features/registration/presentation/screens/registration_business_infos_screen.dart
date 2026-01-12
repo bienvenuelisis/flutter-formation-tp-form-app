@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
-import 'package:form_app/features/registration/presentation/screens/registration_login_info_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
-class RegistrationPersonalInfosStepScreen extends StatefulWidget {
-  const RegistrationPersonalInfosStepScreen({super.key});
+class RegistrationBusinessInfosScreen extends StatefulWidget {
+  const RegistrationBusinessInfosScreen({super.key});
 
   @override
-  State<RegistrationPersonalInfosStepScreen> createState() =>
-      _RegistrationPersonalInfosStepScreenState();
+  State<RegistrationBusinessInfosScreen> createState() =>
+      _RegistrationBusinessInfosScreenState();
 }
 
-class _RegistrationPersonalInfosStepScreenState
-    extends State<RegistrationPersonalInfosStepScreen> {
-  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _RegistrationBusinessInfosScreenState
+    extends State<RegistrationBusinessInfosScreen> {
   // Controllers to manage text input
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController dateOfBirthController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -38,7 +37,8 @@ class _RegistrationPersonalInfosStepScreenState
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,7 +66,7 @@ class _RegistrationPersonalInfosStepScreenState
 
                 // Title
                 Text(
-                  "Tell us about yourself",
+                  "Tell us about your business",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -78,7 +78,7 @@ class _RegistrationPersonalInfosStepScreenState
 
                 // Subtitle
                 Text(
-                  "Please enter your details to create your account.",
+                  "We need a few details to get your profile set up correctly.",
                   style: TextStyle(color: Colors.white60, fontSize: 16),
                 ),
 
@@ -86,7 +86,7 @@ class _RegistrationPersonalInfosStepScreenState
 
                 // Full Name field
                 Text(
-                  "Full Name",
+                  "Company Name",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -94,14 +94,20 @@ class _RegistrationPersonalInfosStepScreenState
                   ),
                 ),
                 SizedBox(height: 8),
-                TextField(
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your company name';
+                    }
+                    return null;
+                  },
                   controller: fullNameController,
                   style: TextStyle(color: Colors.white70),
                   decoration: InputDecoration(
-                    hintText: "John Doe",
+                    hintText: "e.g. Acme Corp",
                     hintStyle: TextStyle(color: Colors.white30),
                     prefixIcon: Icon(
-                      Icons.person_outline,
+                      Icons.corporate_fare,
                       color: Colors.white54,
                     ),
                     filled: true,
@@ -128,7 +134,7 @@ class _RegistrationPersonalInfosStepScreenState
 
                 // Email Address field
                 Text(
-                  "Email Address",
+                  "Business Type",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -136,63 +142,25 @@ class _RegistrationPersonalInfosStepScreenState
                   ),
                 ),
                 SizedBox(height: 8),
-                TextField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(color: Colors.white70),
-                  decoration: InputDecoration(
-                    hintText: "john@example.com",
-                    hintStyle: TextStyle(color: Colors.white30),
-                    prefixIcon: Icon(
-                      Icons.email_outlined,
-                      color: Colors.white54,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white.withOpacity(0.1),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.white30, width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(color: Colors.white30, width: 1),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Colors.greenAccent,
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
 
-                SizedBox(height: 24),
-
-                // Phone Number field
-                Text(
-                  "Phone Number",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: 8),
-                TextField(
-                  controller: phoneController,
-                  keyboardType: TextInputType.phone,
-                  style: TextStyle(color: Colors.white70),
+                //liste deroulante
+                DropdownButtonFormField(
+                  items: [
+                    DropdownMenuItem(
+                      value: 1,
+                      child: Text("Entreprise individuelle"),
+                    ),
+                    DropdownMenuItem(
+                      value: 2,
+                      child: Text("Entreprise commerciale"),
+                    ),
+                  ],
+                  onChanged: (value) {},
 
                   decoration: InputDecoration(
-                    hintText: "+1 (555) 000-0000",
-
+                    hintText: "Select Business Type",
                     hintStyle: TextStyle(color: Colors.white30),
-
-                    prefixIcon: Icon(
-                      Icons.phone_outlined,
-                      color: Colors.white54,
-                    ),
+                    prefixIcon: Icon(Icons.widgets, color: Colors.white54),
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.1),
                     border: OutlineInputBorder(
@@ -217,7 +185,7 @@ class _RegistrationPersonalInfosStepScreenState
 
                 // Date of Birth field
                 Text(
-                  "Date of Birth",
+                  "Business Address",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -225,17 +193,20 @@ class _RegistrationPersonalInfosStepScreenState
                   ),
                 ),
                 SizedBox(height: 8),
-                TextField(
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your address';
+                    }
+                    return null;
+                  },
                   controller: dateOfBirthController,
                   readOnly: true,
                   style: TextStyle(color: Colors.white70),
                   decoration: InputDecoration(
-                    hintText: "MM/DD/YYYY",
+                    hintText: "Street Address",
                     hintStyle: TextStyle(color: Colors.white30),
-                    prefixIcon: Icon(
-                      Icons.calendar_today_outlined,
-                      color: Colors.white54,
-                    ),
+                    prefixIcon: Icon(Icons.location_on, color: Colors.white54),
                     suffixIcon: Icon(
                       Icons.arrow_drop_down,
                       color: Colors.white54,
@@ -276,7 +247,7 @@ class _RegistrationPersonalInfosStepScreenState
                   },
                 ),
 
-                SizedBox(height: 40),
+                Spacer(),
 
                 // Bottom buttons
                 Row(
@@ -307,10 +278,12 @@ class _RegistrationPersonalInfosStepScreenState
                         onPressed: () {
                           // Handle next step
                           // You can add validation here before proceeding
-                          navigateToPage(
-                            context,
-                            RegistrationLoginInfoStepScreen(),
-                          );
+                          bool isValid =
+                              formKey.currentState?.validate() ?? false;
+
+                          if (isValid) {
+                            navigateToPage(context, Container());
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.black,

@@ -10,6 +10,10 @@ class FormApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage(), theme: ThemeData());
+    return MaterialApp(
+      home: HomePage(),
+      theme: ThemeData(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
