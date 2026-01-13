@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
+import 'package:form_app/core/navigation/utils.dart';
+import 'package:form_app/features/registration/presentation/screens/registration_email_verification_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 /// Écran permettant à l'utilisateur de saisir son adresse
@@ -423,7 +425,10 @@ class _RegistrationAddressStepScreenState
                           //   );
                           //   return;
                           // }
-                          // Navigator.pushNamed(context, '/professional-info-step');
+                          navigateToPage(
+                            context,
+                            RegistrationEmailVerificationStepScreen(),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.black,

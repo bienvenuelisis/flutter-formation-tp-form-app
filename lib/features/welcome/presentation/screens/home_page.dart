@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
+import 'package:form_app/features/registration/data/registration_model.dart';
 import 'package:form_app/features/registration/presentation/screens/registration_personal_infos_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
@@ -119,9 +120,20 @@ class HomePage extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
+                            RegistrationModel registration = RegistrationModel(
+                              fullname: '',
+                              emailAddress: '',
+                              phoneNumber: '',
+                              dateOfBirth: '',
+                              username: '',
+                              password: '',
+                            );
+
                             navigateToPage(
                               context,
-                              RegistrationPersonalInfosStepScreen(),
+                              RegistrationPersonalInfosStepScreen(
+                                registrationData: registration,
+                              ),
                             );
                             // Navigator.push(
                             //   context,

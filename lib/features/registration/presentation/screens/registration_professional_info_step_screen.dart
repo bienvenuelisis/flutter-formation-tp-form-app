@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
+import 'package:form_app/core/navigation/utils.dart';
+import 'package:form_app/features/registration/presentation/screens/registration_address_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 /// Écran permettant à l'utilisateur de saisir ses informations professionnelles
@@ -434,7 +436,10 @@ class _RegistrationProfessionalInfoStepScreenState
                           //   );
                           //   return;
                           // }
-                          // Navigator.pushNamed(context, '/email-verification-step');
+                          navigateToPage(
+                            context,
+                            RegistrationAddressStepScreen(),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.black,

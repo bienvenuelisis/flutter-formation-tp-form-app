@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
+import 'package:form_app/features/registration/data/registration_model.dart';
+import 'package:form_app/features/registration/presentation/screens/registration_professional_info_step_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 class RegistrationBusinessInfosScreen extends StatefulWidget {
-  const RegistrationBusinessInfosScreen({super.key});
+  const RegistrationBusinessInfosScreen({
+    super.key,
+    required this.registrationData,
+  });
+
+  final RegistrationModel registrationData;
 
   @override
   State<RegistrationBusinessInfosScreen> createState() =>
@@ -60,7 +67,7 @@ class _RegistrationBusinessInfosScreenState
                 ),
                 SizedBox(height: 10),
 
-                StepsIndicators(count: 6, currentIndex: 0),
+                StepsIndicators(count: 6, currentIndex: 2),
 
                 SizedBox(height: 40),
 
@@ -282,7 +289,10 @@ class _RegistrationBusinessInfosScreenState
                               formKey.currentState?.validate() ?? false;
 
                           if (isValid) {
-                            navigateToPage(context, Container());
+                            navigateToPage(
+                              context,
+                              RegistrationProfessionalInfoStepScreen(),
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:form_app/core/constants/colors.dart';
+import 'package:form_app/core/navigation/utils.dart';
+import 'package:form_app/features/registration/presentation/screens/registration_success_screen.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 /// Écran de vérification d'email
@@ -198,6 +200,7 @@ class _RegistrationEmailVerificationStepScreenState
     // if (response.success) {
     //   Navigator.pushNamed(context, '/success-step');
     // }
+    navigateToPage(context, RegistrationSuccessScreen());
   }
 
   // ===== MÉTHODE POUR RENVOYER LE CODE =====
