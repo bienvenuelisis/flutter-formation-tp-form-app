@@ -3,6 +3,7 @@ import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
 import 'package:form_app/features/registration/data/registration_model.dart';
 import 'package:form_app/features/registration/presentation/screens/registration_login_info_step_screen.dart';
+import 'package:form_app/features/registration/services/user_registration_services.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 class RegistrationPersonalInfosStepScreen extends StatefulWidget {
@@ -359,6 +360,10 @@ class _RegistrationPersonalInfosStepScreenState
                                     emailAddress: emailController.text,
                                     phoneNumber: phoneController.text,
                                   );
+
+                              UserRegistrationServices().saveFormData(
+                                registrationData,
+                              );
 
                               // Handle next step
                               // You can add validation here before proceeding

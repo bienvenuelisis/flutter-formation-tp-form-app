@@ -3,6 +3,7 @@ import 'package:form_app/core/constants/colors.dart';
 import 'package:form_app/core/navigation/utils.dart';
 import 'package:form_app/features/registration/data/registration_model.dart';
 import 'package:form_app/features/registration/presentation/screens/registration_personal_infos_step_screen.dart';
+import 'package:form_app/features/registration/services/user_registration_services.dart';
 import 'package:form_app/features/welcome/presentation/widgets/rounded_indicator.dart';
 
 class HomePage extends StatelessWidget {
@@ -119,15 +120,10 @@ class HomePage extends StatelessWidget {
                       spacing: 20,
                       children: [
                         ElevatedButton(
-                          onPressed: () {
-                            RegistrationModel registration = RegistrationModel(
-                              fullname: '',
-                              emailAddress: '',
-                              phoneNumber: '',
-                              dateOfBirth: '',
-                              username: '',
-                              password: '',
-                            );
+                          onPressed: () async {
+                            RegistrationModel registration =
+                                await UserRegistrationServices()
+                                    .loadPreviousFormData();
 
                             navigateToPage(
                               context,
@@ -135,13 +131,6 @@ class HomePage extends StatelessWidget {
                                 registrationData: registration,
                               ),
                             );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => HomePage()),
-                            // );
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(builder: (context) => HomePage()),
-                            // );
                           },
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.black,
